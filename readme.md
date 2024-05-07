@@ -1,0 +1,1 @@
+Example denoting subscription service on-chain using Solana Token Extensions.
