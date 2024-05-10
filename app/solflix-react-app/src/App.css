@@ -16,18 +16,23 @@ nav {
   height: 40px;
 }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #111;
-  color: #fff;
+.movie-list {
+  margin-bottom: 2rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.movie-card {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.movie-card img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.movie-details {
+  background-color: #222;
+  padding: 1rem;
+  margin-top: 0.5rem;
 }
