@@ -1,5 +1,6 @@
 import React, { FC, useMemo } from 'react';
-import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ConnectionProvider, WalletProvider, useWallet } from '@solana/wallet-adapter-react';
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import { clusterApiUrl } from '@solana/web3.js';
 import {
@@ -10,6 +11,8 @@ import { WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-r
 
 import './App.css';
 import Home from './components/Home';
+import ConnectWallet from './components/ConnectWallet';
+import { hasNFT } from './utils/nftCheck';
 
 const App: FC = () => {
   const network = WalletAdapterNetwork.Devnet;
@@ -27,17 +30,22 @@ const App: FC = () => {
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
-          <div className="app">
-            <nav>
-              <div className="nav-left">
-                <img src="solflix_logo.png" alt="SolFlix Logo" />
-              </div>
-              <div className="nav-right">
-                <WalletMultiButton />
-              </div>
-            </nav>
-            <Home />
-          </div>
+          <Router>
+            <div className="app">
+              <nav>
+                <div className="nav-left">
+                  <img src="solflix_logo.png" alt="SolFlix Logo" />
+                </div>
+                <div className="nav-right">
+                  <WalletMultiButton />
+                </div>
+              </nav>
+              <Switch>
+                <Route exact path="/" component={ConnectWallet} />
+                <Route path="/home" component={Home} />
+              </Switch>
+            </div>
+          </Router>
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
