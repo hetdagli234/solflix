@@ -1,44 +1,27 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { FC } from 'react';
+import { ScrollMenu } from 'react-horizontal-scrolling-menu';
+import MovieCard from './MovieCard';
 
-const MovieListContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 20px;
-`;
-
-const MovieCard = styled.div`
-  background-color: #1a1a1a;
-  border-radius: 4px;
-  padding: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-`;
-
-const MovieTitle = styled.h3`
-  margin: 0;
-  font-size: 18px;
-  color: #fff;
-`;
-
-interface Movie {
-  id: number;
+interface MovieListProps {
   title: string;
 }
 
-interface MovieListProps {
-  movies: Movie[];
-}
+const MovieList: FC<MovieListProps> = ({ title }) => {
+  const movies = [
+    { id: 1, title: 'Movie 1', thumbnail: 'thumbnail1.jpg' },
+    { id: 2, title: 'Movie 2', thumbnail: 'thumbnail2.jpg' },
+    // Add more movies...
+  ];
 
-const MovieList: React.FC<MovieListProps> = ({ movies }) => {
   return (
-    <MovieListContainer>
-      {movies.map(movie => (
-        <MovieCard key={movie.id}>
-          <MovieTitle>{movie.title}</MovieTitle>
-        </MovieCard>
-      ))}
-    </MovieListContainer>
+    <div className="movie-list">
+      <h2>{title}</h2>
+      <ScrollMenu>
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </ScrollMenu>
+    </div>
   );
 };
 

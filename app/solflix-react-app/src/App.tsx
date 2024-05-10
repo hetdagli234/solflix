@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useMemo } from 'react';
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import { clusterApiUrl } from '@solana/web3.js';
@@ -10,25 +10,18 @@ import { WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-r
 
 import './App.css';
 import Home from './components/Home';
-import MovieList from './components/MovieList';
 
-const App: React.FC = () => {
+const App: FC = () => {
   const network = WalletAdapterNetwork.Devnet;
-  const endpoint = React.useMemo(() => clusterApiUrl(network), [network]);
+  const endpoint = useMemo(() => clusterApiUrl(network), [network]);
 
-  const wallets = React.useMemo(
+  const wallets = useMemo(
     () => [
       new PhantomWalletAdapter(),
       new SolflareWalletAdapter(),
     ],
     []
   );
-
-  const movies = [
-    { id: 1, title: 'Movie 1' },
-    { id: 2, title: 'Movie 2' },
-    { id: 3, title: 'Movie 3' },
-  ];
 
   return (
     <ConnectionProvider endpoint={endpoint}>
@@ -44,7 +37,6 @@ const App: React.FC = () => {
               </div>
             </nav>
             <Home />
-            <MovieList movies={movies} />
           </div>
         </WalletModalProvider>
       </WalletProvider>
