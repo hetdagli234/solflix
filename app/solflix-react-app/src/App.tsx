@@ -11,7 +11,7 @@ import { WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-r
 
 import './App.css';
 import Home from './components/Home';
-import ConnectWallet from './components/ConnectWallet';
+import ConnectWallet from './components/ConnectWallet'; 
 import { hasNFT } from './utils/nftCheck';
 
 const App: FC = () => {
