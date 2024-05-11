@@ -12,8 +12,8 @@ export const hasNFT = async (publicKey: PublicKey): Promise<boolean> => {
     programId: TOKEN_PROGRAM_ID,
   });
   const nftAccount = tokenAccounts.value.find((account) => {
-    const accountInfo = account.account.data;
-    const parsedInfo = Buffer.from(accountInfo, 'base64').toString();
+    const accountInfo = account.account.data; // Assuming accountInfo is already a Buffer
+    const parsedInfo = accountInfo.toString(); // Directly convert Buffer to string
     const mintInfo = JSON.parse(parsedInfo).info.mint;
     return mintInfo === nftMintPublicKey.toBase58();
   });
