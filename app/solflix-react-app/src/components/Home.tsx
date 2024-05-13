@@ -6,8 +6,8 @@ const Home: FC = () => {
     <div className="home">
       <h1>SolFlix</h1>
       <MovieList title="Trending Now" />
-      <MovieList title="Action Movies" />
-      <MovieList title="Comedy Movies" />
+      <MovieList title="Superteam" />
+      <MovieList title="LightSpeed" />
     </div>
   );
 };
