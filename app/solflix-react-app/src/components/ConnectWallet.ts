@@ -21,6 +21,12 @@ const ConnectWallet: FC = () => {
 
     checkNFT();
   }, [publicKey, connected, history]);
+
+  return (
+    <div>
+      //component to return
+    </div>
+  );
 }
 
 export default ConnectWallet;
