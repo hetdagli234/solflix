@@ -24,7 +24,9 @@ const ConnectWallet: FC = () => {
 
   return (
     <div>
-      //component to return
+      <h1>Welcome to SolFlix!</h1>
+      <p>Connect your wallet to access exclusive NFT content.</p>
+      <button onClick={() => history('/connect')}>Connect Wallet</button>
     </div>
   );
 }
